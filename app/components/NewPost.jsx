@@ -1,8 +1,14 @@
 import styles from "./NewPost.module.css";
 
-const NewPost = ({ onChangeTextBox, changeNameHandler }) => {
+const NewPost = ({
+  onChangeTextBox,
+  onChangeName,
+  onAddPost,
+  newName,
+  newPostText,
+}) => {
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={onAddPost}>
       <p>
         <label htmlFor="body">Enter Text:</label>
         <textarea
@@ -19,7 +25,7 @@ const NewPost = ({ onChangeTextBox, changeNameHandler }) => {
           id="name"
           required
           rows={3}
-          onChange={changeNameHandler}
+          onChange={onChangeName}
         />
       </p>
       {/*<div>
@@ -28,7 +34,7 @@ const NewPost = ({ onChangeTextBox, changeNameHandler }) => {
           <p>from: {newName}</p>
           <p>content: {newPostText}</p>
         </div>
-      </div>*/}
+        </div>*/}
     </form>
   );
 };

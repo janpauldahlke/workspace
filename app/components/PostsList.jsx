@@ -6,6 +6,11 @@ import styles from "./PostsList.module.css";
 const PostsList = () => {
   const [newPostText, setNewPostText] = useState("");
   const [newName, setNewName] = useState("");
+  const [posts, setPosts] = useState([
+    { author: "Hgard", content: " Hail discordia" },
+    { author: "Shea", content: " Playboy is fun" },
+    { author: "Wilson", content: " dont judge me" },
+  ]);
 
   const changeTextBoxHandler = (event) => {
     const newPostText = event.target.value;
@@ -17,21 +22,40 @@ const PostsList = () => {
     setNewName(newName);
   };
 
-  const exampleData = [
-    { author: "Hgard", content: " Hail discordia" },
-    { author: "Shea", content: " Playboy is fun" },
-    { author: "Wilson", content: " dont judge me" },
-  ];
+  const addPostHandler = (event) => {
+    event.preventDefault();
+
+    setPosts((prevPosts) => [
+      ...prevPosts,
+      { author: newName, content: newPostText },
+    ]);
+    setNewPostText("");
+    setNewName("");
+  };
+
+  const deletePostHandler = (index) => {
+    setPosts((prevPosts) => prevPosts.filter((_, i) => i !== index));
+  };
 
   return (
     <>
       <NewPost
         onChangeTextBox={changeTextBoxHandler}
         onChangeName={changeNameHandler}
+        onAddPost={addPostHandler}
+        newPostText={newPostText}
+        newName={newName}
       />
       <ul className={styles.posts}>
-        {exampleData.map(({ author, content }, index) => {
-          return <Post key={index} author={author} content={content}></Post>;
+        {posts.map(({ author, content }, index) => {
+          return (
+            <Post
+              onDeletePost={() => deletePostHandler(index)}
+              key={index}
+              author={author}
+              content={content}
+            ></Post>
+          );
         })}
       </ul>
     </>

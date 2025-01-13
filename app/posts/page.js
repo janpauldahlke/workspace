@@ -12,7 +12,6 @@ export default function TestPage() {
 
   return (
     <main>
-      <h1>Feed:</h1>
       <PostsList></PostsList>
       <button onClick={back}>go back</button>
     </main>

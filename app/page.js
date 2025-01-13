@@ -5,16 +5,16 @@ export default function Home() {
   const router = useRouter();
 
   const routeTest = () => {
-    router.push("/test");
+    router.push("/posts");
   };
 
   return (
     <main>
       <img src="/logo.png" alt="A server surrounded by magic sparkles." />
       <h1>nextjs playground</h1>
-      <p>🔥 rock it 🔥</p>
+      <p>weiterbildung mit der one</p>
 
-      <button onClick={routeTest}>goto test</button>
+      <button onClick={routeTest}>See Posts</button>
     </main>
   );
 }
