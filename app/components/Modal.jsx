@@ -5,10 +5,9 @@ import styles from "./Modal.module.css";
 const Modal = ({ children, isModalOpen, onInteractWithModal }) => {
   return (
     <>
-      <div
-        className={isModalOpen ? styles.backdrop : ""}
-        onClick={onInteractWithModal}
-      ></div>
+      {isModalOpen ? (
+        <div className={styles.backdrop} onClick={onInteractWithModal}></div>
+      ) : null}
       <dialog open={isModalOpen} className={styles.modal}>
         {children}
       </dialog>

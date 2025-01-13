@@ -42,7 +42,7 @@ const PostsList = () => {
   };
 
   const hideModal = () => {
-    setModalOpen(!false);
+    setModalOpen(false);
   };
 
   const openModal = () => {
