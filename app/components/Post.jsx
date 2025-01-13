@@ -5,7 +5,13 @@ const Post = ({ author, content, onDeletePost, onEditPost }) => {
     <li className={styles.post} onClick={onEditPost}>
       <p className={styles.author}>{author}</p>
       <p className={styles.content}>{content}</p>
-      <button className="button-contrast" onClick={onDeletePost}>
+      <button
+        className="button-contrast"
+        onClick={(event) => {
+          event.stopPropagation(); // to not bubble up
+          onDeletePost();
+        }}
+      >
         delete
       </button>
     </li>

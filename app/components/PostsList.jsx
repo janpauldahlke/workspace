@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Post from "./Post";
 import NewPost from "./NewPost";
 import Modal from "./Modal";
@@ -14,6 +14,14 @@ const PostsList = () => {
     { author: "Shea", content: " Playboy is fun" },
     { author: "Wilson", content: " dont judge me" },
   ]);
+
+  const textAreaRef = useRef(null);
+
+  useEffect(() => {
+    if (isModalOpen && textAreaRef.current) {
+      textAreaRef.current.focus();
+    }
+  }, [isModalOpen]);
 
   const changeTextBoxHandler = (event) => {
     const newPostText = event.target.value;
@@ -77,6 +85,7 @@ const PostsList = () => {
       </button>
       <Modal onInteractWithModal={hideModal} {...{ isModalOpen }}>
         <NewPost
+          ref={textAreaRef}
           onChangeTextBox={changeTextBoxHandler}
           onChangeName={changeNameHandler}
           onAddPost={addPostHandler}
