@@ -8,6 +8,7 @@ const PostsList = () => {
   const [newPostText, setNewPostText] = useState("");
   const [newName, setNewName] = useState("");
   const [isModalOpen, setModalOpen] = useState(false);
+  const [editingIndex, setEditingIndex] = useState(null);
   const [posts, setPosts] = useState([
     { author: "Hgard", content: " Hail discordia" },
     { author: "Shea", content: " Playboy is fun" },
@@ -27,10 +28,21 @@ const PostsList = () => {
   const addPostHandler = (event) => {
     event.preventDefault();
 
-    setPosts((prevPosts) => [
-      ...prevPosts,
-      { author: newName, content: newPostText },
-    ]);
+    //editpost here, found if index is set and existent
+    if (editingIndex !== null) {
+      setPosts((prevPosts) =>
+        prevPosts.map((post, i) =>
+          i === editingIndex ? { author: newName, content: newPostText } : post
+        )
+      );
+      setEditingIndex(null);
+    } else {
+      // add new post functionality here
+      setPosts((prevPosts) => [
+        ...prevPosts,
+        { author: newName, content: newPostText },
+      ]);
+    }
 
     setNewPostText("");
     setNewName("");
@@ -39,6 +51,15 @@ const PostsList = () => {
 
   const deletePostHandler = (index) => {
     setPosts((prevPosts) => prevPosts.filter((_, i) => i !== index));
+  };
+
+  const editPostHandler = (index) => {
+    setModalOpen(true);
+    const postToBeEdited = posts[index];
+    setNewName(postToBeEdited.author);
+    setNewPostText(postToBeEdited.content);
+
+    setEditingIndex(index);
   };
 
   const hideModal = () => {
@@ -66,6 +87,7 @@ const PostsList = () => {
         {posts.map(({ author, content }, index) => {
           return (
             <Post
+              onEditPost={() => editPostHandler(index)}
               onDeletePost={() => deletePostHandler(index)}
               key={index}
               author={author}
