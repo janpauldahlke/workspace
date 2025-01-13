@@ -18,7 +18,7 @@ export default function Home() {
       <p>weiterbildung mit der one</p>
 
       <button className="myButton" onClick={routeTest}>
-        See Posts
+        See and Create Postings
       </button>
     </main>
   );

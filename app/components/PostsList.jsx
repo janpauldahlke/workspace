@@ -1,11 +1,13 @@
 import { useState } from "react";
 import Post from "./Post";
 import NewPost from "./NewPost";
+import Modal from "./Modal";
 import styles from "./PostsList.module.css";
 
 const PostsList = () => {
   const [newPostText, setNewPostText] = useState("");
   const [newName, setNewName] = useState("");
+  const [isModalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useState([
     { author: "Hgard", content: " Hail discordia" },
     { author: "Shea", content: " Playboy is fun" },
@@ -32,20 +34,34 @@ const PostsList = () => {
 
     setNewPostText("");
     setNewName("");
+    setModalOpen(false);
   };
 
   const deletePostHandler = (index) => {
     setPosts((prevPosts) => prevPosts.filter((_, i) => i !== index));
   };
 
+  const hideModal = () => {
+    setModalOpen(!false);
+  };
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
   return (
     <>
-      <NewPost
-        onChangeTextBox={changeTextBoxHandler}
-        onChangeName={changeNameHandler}
-        onAddPost={addPostHandler}
-        {...{ newPostText, newName }} // spread like so better then newPostText={newPostText}
-      />
+      <button className="myButton" onClick={openModal}>
+        create new Post
+      </button>
+      <Modal onInteractWithModal={hideModal} {...{ isModalOpen }}>
+        <NewPost
+          onChangeTextBox={changeTextBoxHandler}
+          onChangeName={changeNameHandler}
+          onAddPost={addPostHandler}
+          {...{ newPostText, newName }} // spread like so better then newPostText={newPostText}
+        />
+      </Modal>
       <ul className={styles.posts}>
         {posts.map(({ author, content }, index) => {
           return (
