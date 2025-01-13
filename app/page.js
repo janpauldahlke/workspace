@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
@@ -10,11 +11,15 @@ export default function Home() {
 
   return (
     <main>
-      <img src="/logo.png" alt="A server surrounded by magic sparkles." />
+      <div>
+        <Image src="/logo.jpg" alt="Logo" width={200} height={100} />
+      </div>
       <h1>nextjs playground</h1>
       <p>weiterbildung mit der one</p>
 
-      <button onClick={routeTest}>See Posts</button>
+      <button className="myButton" onClick={routeTest}>
+        See Posts
+      </button>
     </main>
   );
 }

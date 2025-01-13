@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   height: 100%;
 }
 
@@ -32,7 +32,7 @@ h1 {
   font-size: 3rem;
   margin: 3rem auto;
   color: #ede9f3;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 p {
@@ -50,4 +50,43 @@ p a:hover,
 p a:active {
   color: #bd3df4;
   border-color: #bd3df4;
+}
+
+.myButton {
+  margin: 1rem 0;
+  padding: 0.8rem 1.5rem;
+  background-color: #9c7eee; /* Same background as .post */
+  border: none;
+  border-radius: 8px; /* Same border radius */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); /* Same shadow */
+  color: #543280; /* Text color similar to .author */
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase; /* Match .author */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.myButton:hover {
+  background-color: #8b6ed6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.myButton:active {
+  background-color: #7a5ec0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transform: scale(0.98);
+}
+
+.button-contrast {
+  margin: 1rem 0;
+  padding: 0.8rem 1.5rem;
+  background-color: #f4f4f4;
+  border: 2px solid #9c7eee;
+  border-radius: 8px;
+  color: #543280;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
 }

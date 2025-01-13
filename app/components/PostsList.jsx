@@ -29,6 +29,7 @@ const PostsList = () => {
       ...prevPosts,
       { author: newName, content: newPostText },
     ]);
+
     setNewPostText("");
     setNewName("");
   };
@@ -43,8 +44,7 @@ const PostsList = () => {
         onChangeTextBox={changeTextBoxHandler}
         onChangeName={changeNameHandler}
         onAddPost={addPostHandler}
-        newPostText={newPostText}
-        newName={newName}
+        {...{ newPostText, newName }} // spread like so better then newPostText={newPostText}
       />
       <ul className={styles.posts}>
         {posts.map(({ author, content }, index) => {

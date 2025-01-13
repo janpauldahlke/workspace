@@ -13,7 +13,9 @@ export default function TestPage() {
   return (
     <main>
       <PostsList></PostsList>
-      <button onClick={back}>go back</button>
+      <button className="myButton" onClick={back}>
+        go back
+      </button>
     </main>
   );
 }

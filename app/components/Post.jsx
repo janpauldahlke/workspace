@@ -6,7 +6,9 @@ const Post = ({ author, content, onDeletePost }) => {
     <li className={styles.post}>
       <p className={styles.author}>{author}</p>
       <p className={styles.content}>{content}</p>
-      <button onClick={onDeletePost}>delete</button>
+      <button className="button-contrast" onClick={onDeletePost}>
+        delete
+      </button>
     </li>
   );
 };
