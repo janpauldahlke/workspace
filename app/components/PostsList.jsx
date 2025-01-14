@@ -89,6 +89,7 @@ const PostsList = () => {
           onChangeTextBox={changeTextBoxHandler}
           onChangeName={changeNameHandler}
           onAddPost={addPostHandler}
+          onInteractWithModal={hideModal}
           {...{ newPostText, newName }} // spread like so better then newPostText={newPostText}
         />
       </Modal>

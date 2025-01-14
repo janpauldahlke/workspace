@@ -2,7 +2,17 @@ import { forwardRef } from "react";
 import styles from "./NewPost.module.css";
 
 const NewPost = forwardRef(
-  ({ onChangeTextBox, onChangeName, onAddPost, newPostText, newName }, ref) => {
+  (
+    {
+      onChangeTextBox,
+      onChangeName,
+      onAddPost,
+      newPostText,
+      newName,
+      onInteractWithModal,
+    },
+    ref
+  ) => {
     return (
       <form className={styles.form} onSubmit={onAddPost}>
         <p>
@@ -26,9 +36,14 @@ const NewPost = forwardRef(
             value={newName}
           />
         </p>
-        <button className="button-contrast" type="submit">
-          Publish
-        </button>
+        <div>
+          <button className="button-contrast" onClick={onInteractWithModal}>
+            Cancel
+          </button>
+          <button className="button-contrast" type="submit">
+            Publish
+          </button>
+        </div>
       </form>
     );
   }
